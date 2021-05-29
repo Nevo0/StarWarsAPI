@@ -83,7 +83,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-
+        return view('admin.users.edit')
+        ->with([
+            'roles'=> Role::all(),
+            'user'=> User::find($id),
+        ]);
     }
 
     /**

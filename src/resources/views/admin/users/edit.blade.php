@@ -6,11 +6,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Create new user</div>
+                <div class="card-header">Edit user</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.users.store') }}">
-                        @include('admin.users.partials.form', ['create'=> true])
+                    <form method="POST" action="{{ route('admin.users.update', $user->id ) }}">
+                        @method('PATCH')
+                        @include('admin.users.partials.form')
                     </form>
                 </div>
             </div>

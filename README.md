@@ -25,6 +25,16 @@ App\Providers\AppServiceProvider add Paginator::useBootstrap();
 >>$ php artisan make:controller Admin\\ApiController
 
 
+@include('admin.users.partials.form', ['create'=> true])
+@isset($create) ... @endisset
+
+
+@isset($user){{$user->email}} @endisset
+
+
+@if(in_array($role->id, $user->roles->pluck('id')->toArray())) checked
+
+
 
 # docker-compose-laravel
 
