@@ -32,6 +32,7 @@
                             @if (Route::has('login'))
                             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                 @auth
+                                <a href="#" class="ml-4 text-sm text-gray-700 underline">{{ Auth::user()->name }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
@@ -54,7 +55,7 @@
 
                 </div>
           </nav>
-        @can('logged-in')
+        @can('is-admin')
 
 
           <nav class="navbar sub-nav navbar-expand-lg ">

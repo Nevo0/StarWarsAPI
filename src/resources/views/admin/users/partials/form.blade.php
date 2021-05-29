@@ -1,11 +1,11 @@
 @csrf
 @isset($superAdmin )
-    @if ($superAdmin)
+    @if ($name)
         <div class="form-group row">
             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
             <div class="col-md-6">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }} @isset($user){{$user->email}} @endisset" required autocomplete="name" autofocus>
+                <input id="name" type="hidden" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}@isset($name){{$name}} @endisset" required autocomplete="name" >
 
                 @error('name')
                     <span class="invalid-feedback" role="alert">

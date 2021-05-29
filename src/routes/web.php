@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,8 @@ use App\Http\Controllers\Admin\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [ApiController::class, 'index']);
+
 
 Route::prefix('admin')->middleware(['auth', 'auth.isAdmin'])->name('admin.')->group( function (){
     Route::resource('/users', UserController::class);

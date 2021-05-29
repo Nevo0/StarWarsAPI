@@ -35,7 +35,7 @@ class CreateNewUser implements CreatesNewUsers
 
 
         $user = new User;
-        $user->name = ApiController::getName();
+        $user->name = ApiController::people();
         $user->email =$input['email'];
         $user->password =$input['password'];
         // $user->create($request->except(['_token','roles']));
