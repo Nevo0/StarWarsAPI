@@ -18,7 +18,10 @@ class UserController extends Controller
         //
         $users= User::paginate(5);
         dd($users);
-
+        return view('admin.users.index')
+        ->with([
+            'users'=> $users
+        ]);
     }
 
     /**
