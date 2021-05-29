@@ -47,7 +47,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+
         $validatedData =$request->validate([
             'email'=> 'required|max:255|unique:users',
             'password'=> 'required|min:5|max:255'
@@ -57,7 +57,12 @@ class UserController extends Controller
         $user->email =$request->email;
         $user->password =$request->password;
         // $user->create($request->except(['_token','roles']));
-        }
+
+        $success = $user->save();
+        $user->roles()->sync($request->roles);
+
+        return redirect( route('admin.users.index'));
+    }
 
     /**
      * Display the specified resource.
