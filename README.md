@@ -14,18 +14,24 @@
 >>$npm run watch
 
 >>$php artisan make:model Role -a
+
 >>$php artisan make:migration create_role_user_table
 >>$php artisan migrate
 >>$php artisan migrate:rollback
 >>$php artisan migrate:reset
+>>$php artisan migrate:refresh --seed
+
 >>$php artisan db:seed
 >>$php artisan db:seed --class=RoleSeeder
->>$php artisan migrate:refresh --seed
+
+>>$php artisan make:middleware AccessAdmin
+
+>>$ php artisan make:controller Admin\\ApiController
 
 
 App\Providers\AppServiceProvider add Paginator::useBootstrap();
 
->>$ php artisan make:controller Admin\\ApiController
+
 
 
 @include('admin.users.partials.form', ['create'=> true])
@@ -37,6 +43,11 @@ App\Providers\AppServiceProvider add Paginator::useBootstrap();
 
 @if(in_array($role->id, $user->roles->pluck('id')->toArray())) checked
 
+
+Gate::allows('is-admin')
+Gate::denies('logged-in')
+
+@can('is-admin') ... @endcan
 
 
 # docker-compose-laravel
