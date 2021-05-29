@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         //
         $users= User::paginate(5);
-        dd($users);
+
         return view('admin.users.index')
         ->with([
             'users'=> $users
@@ -64,7 +64,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -87,6 +87,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect( route('admin.users.index'));
     }
 }

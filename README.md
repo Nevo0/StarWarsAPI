@@ -19,6 +19,8 @@
 >>$php artisan db:seed --class=RoleSeeder
 >>$php artisan migrate:refresh --seed
 
+App\Providers\AppServiceProvider add Paginator::useBootstrap();
+
 
 
 # docker-compose-laravel
