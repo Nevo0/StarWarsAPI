@@ -3,7 +3,7 @@
 >>$composer require laravel/fortify
 >>$php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
 >>$ git checkout -b   Switched to a new branch
->>$ git branch -d   delete branch locally
+>>$ cd    delete branch locally
 >>$ git checkout
 >>$ git merge
 >>$npm install   install dep
@@ -12,7 +12,12 @@
 >>$npm run watch
 >>$php artisan make:model Role -a
 >>$php artisan make:migration create_role_user_table
+>>$php artisan migrate
 >>$php artisan migrate:rollback
+>>$php artisan migrate:reset
+>>$php artisan db:seed
+>>$php artisan db:seed --class=RoleSeeder
+>>$php artisan migrate:refresh --seed
 
 
 
