@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+
 use App\Models\User;
 use App\Models\Role;
 use App\Http\Controllers\Admin\ApiController;
+
 
 class UserController extends Controller
 {
@@ -18,12 +21,20 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users= User::paginate(5);
+        // if ( Gate::denies('logged-in')) {
+        //     dd("noaccess");
+        //     abort(403);
+        // }
 
-        return view('admin.users.index')
-        ->with([
-            'users'=> $users
-        ]);
+            $users= User::paginate(5);
+
+            return view('admin.users.index')
+            ->with([
+                'users'=> $users
+            ]);
+
+
+
     }
 
     /**
@@ -58,8 +69,10 @@ class UserController extends Controller
         $user->email =$request->email;
         $user->password =$request->password;
         // $user->create($request->except(['_token','roles']));
+        // dd($request->roles);
         $success = $user->save();
         $user->roles()->sync($request->roles);
+        // $user->roles()->sync([1]);
         $request->session()->flash('success','You have created the user');
         return redirect( route('admin.users.index'));
     }
@@ -99,6 +112,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $user= User::find($id);
         if(!$user){
             $request->session()->flash('error','You can not edit this user');

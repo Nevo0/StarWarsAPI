@@ -10834,8 +10834,14 @@ body {
 
 .navbar {
   background-color: #1E2632;
-  margin-bottom: 30px;
 }
 .navbar a {
   color: #fff;
+}
+
+.sub-nav {
+  background-color: #fff;
+}
+.sub-nav a {
+  color: #1E2632;
 }

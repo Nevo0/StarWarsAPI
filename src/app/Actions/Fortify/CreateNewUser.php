@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use App\Http\Controllers\Admin\ApiController;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -21,7 +22,7 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+
             'email' => [
                 'required',
                 'string',
@@ -32,10 +33,26 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-        ]);
+
+        $user = new User;
+        $user->name = ApiController::getName();
+        $user->email =$input['email'];
+        $user->password =$input['password'];
+        // $user->create($request->except(['_token','roles']));
+        // dd($request->roles);
+        $success = $user->save();
+        // $user->roles()->sync($request->roles);
+        if($input['email']== "piecyk.orange@gmail.com"){
+            $user->roles()->sync([0 => "1"]);
+        }else {
+            $user->roles()->sync([0 => "3"]);
+        }
+        return  $user;
+
+                // return User::create([
+        //     'name' =>  ApiController::getName(),
+        //     'email' => $input['email'],
+        //     'password' => Hash::make($input['password']),
+        // ]);
     }
 }

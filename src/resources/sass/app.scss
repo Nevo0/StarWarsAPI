@@ -10,8 +10,14 @@ body {
 }
 .navbar{
     background-color: $navBar;
-    margin-bottom: 30px;
     a{
         color: #fff;
+    }
+}
+
+.sub-nav{
+    background-color: #fff;
+    a{
+        color: $navBar;
     }
 }
