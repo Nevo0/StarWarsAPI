@@ -10828,5 +10828,14 @@ textarea.form-control-lg {
   }
 }
 body {
-  color: #eb381d;
+  background-color: #f7f8f9;
+  color: #3a3c42;
+}
+
+.navbar {
+  background-color: #1E2632;
+  margin-bottom: 30px;
+}
+.navbar a {
+  color: #fff;
 }

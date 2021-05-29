@@ -1,2 +1,17 @@
 @import "~bootstrap/scss/bootstrap";
 
+$navBar: #1E2632;
+$background: #f7f8f9;
+$text: #3a3c42;
+
+body {
+    background-color: $background ;
+    color: $text;
+}
+.navbar{
+    background-color: $navBar;
+    margin-bottom: 30px;
+    a{
+        color: #fff;
+    }
+}
