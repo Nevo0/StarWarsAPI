@@ -5,28 +5,22 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ApiController extends Controller
 {
     private static $one;
     public static function people() {
         $peoples=Http::get('https://swapi.dev/api/people/')->json();
-        $people=Http::get('https://swapi.dev/api/people/'. rand(1, $peoples['count']))->json();
+        $index = rand(1, $peoples['count']);
+        $people=Http::get('https://swapi.dev/api/people/'. $index)->json();
+        Cache::put('people/'.$index , $people, $seconds = 60*60*24);
        return self::$one =$people['name'];
        }
 
-
     public function index(){
-        // $peoples=Http::get('https://swapi.dev/api/people/')->json();
-        // $people=Http::get('https://swapi.dev/api/people/'. rand(1, $peoples['count']))->json();
-        // dd($this->peopleName());
+
         return view('index');
     }
 
-
-
-    public function peopleName(){
-        return serialize($this->people()['name']);
-
-}
 }

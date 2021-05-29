@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\FilmController;
 use App\Http\Controllers\Admin\ApiController;
 
 /*
@@ -16,6 +17,7 @@ use App\Http\Controllers\Admin\ApiController;
 */
 
 Route::get('/', [ApiController::class, 'index']);
+Route::get('/films', [FilmController::class, 'index']);
 
 
 Route::prefix('admin')->middleware(['auth', 'auth.isAdmin'])->name('admin.')->group( function (){
