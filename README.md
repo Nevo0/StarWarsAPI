@@ -1,4 +1,25 @@
+
+
+>>$composer require laravel/fortify
+>>$php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
+>>$ git checkout -b   Switched to a new branch
+>>$ git branch -d   delete branch locally
+>>$ git checkout
+>>$ git merge
+>>$npm install   install dep
+>>$npm i bootstrap@next popper.js sass sass-loader --save-dev download laib and save in dev
+>>$npm run dev
+>>$npm run watch
+>>$php artisan make:model Role -a
+>>$php artisan make:migration create_role_user_table
+>>$php artisan migrate:rollback
+
+
+
 # docker-compose-laravel
+
+[Compose workflow from Aschmelyun](https://github.com/aschmelyun/docker-compose-laravel)
+
 A pretty simplified Docker Compose workflow that sets up a LEMP network of containers for local Laravel development. You can view the full article that inspired this repo [here](https://dev.to/aschmelyun/the-beauty-of-docker-for-local-laravel-development-13c0).
 
 
