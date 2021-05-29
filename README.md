@@ -2,14 +2,17 @@
 
 >>$composer require laravel/fortify
 >>$php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
+
 >>$ git checkout -b   Switched to a new branch
 >>$ cd    delete branch locally
 >>$ git checkout
 >>$ git merge
+
 >>$npm install   install dep
 >>$npm i bootstrap@next popper.js sass sass-loader --save-dev download laib and save in dev
 >>$npm run dev
 >>$npm run watch
+
 >>$php artisan make:model Role -a
 >>$php artisan make:migration create_role_user_table
 >>$php artisan migrate
