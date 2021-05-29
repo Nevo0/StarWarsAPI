@@ -1,18 +1,20 @@
 @csrf
-@isset($create)
-<div class="form-group row">
-    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+@isset($superAdmin )
+    @if ($superAdmin)
+        <div class="form-group row">
+            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-    <div class="col-md-6">
-        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }} @isset($user){{$user->email}} @endisset" required autocomplete="name" autofocus>
+            <div class="col-md-6">
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }} @isset($user){{$user->email}} @endisset" required autocomplete="name" autofocus>
 
-        @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </div>
-</div>
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+    @endif
 @endisset
 <div class="form-group row mt-1">
     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

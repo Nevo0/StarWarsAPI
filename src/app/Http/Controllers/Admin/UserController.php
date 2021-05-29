@@ -35,7 +35,8 @@ class UserController extends Controller
     {
         return view('admin.users.create')
         ->with([
-            'roles'=> Role::all()
+            'roles'=> Role::all(),
+            'superAdmin' => false
         ]);
     }
 
@@ -57,10 +58,9 @@ class UserController extends Controller
         $user->email =$request->email;
         $user->password =$request->password;
         // $user->create($request->except(['_token','roles']));
-
         $success = $user->save();
         $user->roles()->sync($request->roles);
-
+        $request->session()->flash('success','You have created the user');
         return redirect( route('admin.users.index'));
     }
 
@@ -101,10 +101,12 @@ class UserController extends Controller
     {
         $user= User::find($id);
         if(!$user){
+            $request->session()->flash('error','You can not edit this user');
             return redirect( route('admin.users.index'));
         }
         $user->update($request->except(['_token', 'roles']));
         $user->roles()->sync($request->roles);
+        $request->session()->flash('success','You have edited the user');
         return redirect( route('admin.users.index'));
     }
 
@@ -114,9 +116,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         User::destroy($id);
+        $request->session()->flash('success','You have deleted the user');
         return redirect( route('admin.users.index'));
     }
 }
