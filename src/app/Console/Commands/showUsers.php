@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class showUsers extends Command
 {
@@ -39,7 +40,7 @@ class showUsers extends Command
      */
     public function handle()
     {
-        $users =  User::all();
+        $users = DB::table('users')->select('name')->get();
 
         Log::info($users);
     }
