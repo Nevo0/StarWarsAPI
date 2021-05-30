@@ -56,22 +56,26 @@
 </div>
 @endisset
 <div class="form-group row mt-3">
-    @foreach ($roles as $role)
-    <div class="form-check">
-        <input class="form-check-input" name="roles[]"
-        type="checkbox"
-        value="{{$role->id}}"
-        id="{{$role->name}}"
-        @isset($user)
-        @if(in_array($role->id, $user->roles->pluck('id')->toArray())) checked
-        @endif
+    {{-- @can('is-admin') --}}
+        @isset($roles)
+            @foreach ($roles as $role)
+            <div class="form-check">
+                <input class="form-check-input" name="roles[]"
+                type="checkbox"
+                value="{{$role->id}}"
+                id="{{$role->name}}"
+                @isset($user)
+                @if(in_array($role->id, $user->roles->pluck('id')->toArray())) checked
+                @endif
+                @endisset
+                >
+                <label for="{{$role->name}}" class="form-check-label">
+                    {{$role->name}}
+                </label>
+            </div>
+            @endforeach
         @endisset
-        >
-        <label for="{{$role->name}}" class="form-check-label">
-            {{$role->name}}
-        </label>
-    </div>
-@endforeach
+    {{-- @endcan --}}
 </div>
 
 <div class="form-group row mb-0">

@@ -63,5 +63,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'user.can.url' => \App\Http\Middleware\UserCanURL::class,
+        'user.can.film' => \App\Http\Middleware\UserCanFilm::class,
+        'user.can.plan' => \App\Http\Middleware\UserCanPlanet::class,
     ];
 }

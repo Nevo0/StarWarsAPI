@@ -13,26 +13,26 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
+
         <!-- Styles -->
         <script src="{{asset('js/app.js')}}" defer></script>
+
+
     </head>
     <body class="antialiased">
 
         <nav class="navbar navbar-expand-lg ">
             <div class="container">
 
-                    <a class="navbar-brand" href="#">{{config('app.name', 'StarWarsAPI')}}</a>
+                    <a class="navbar-brand" href="@auth{{ route('panel') }}@endauth">{{config('app.name', 'StarWarsAPI')}}</a>
                     {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button> --}}
-
-
-
                         <div class="d-flex">
                             @if (Route::has('login'))
                             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                 @auth
-                                <a href="#" class="ml-4 text-sm text-gray-700 underline">{{ Auth::user()->name }}</a>
+                                <a href="{{ route('users.edit', Auth::user()->id) }}" class="ml-4 text-sm text-gray-700 underline">{{ Auth::user()->name }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
